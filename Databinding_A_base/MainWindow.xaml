@@ -1,0 +1,18 @@
+﻿<Window x:Class="Databinding_A_base.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Databinding_A_base"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="300">
+    <Grid>
+        <StackPanel Margin="10">
+            <Slider x:Name="slider" VerticalAlignment="Center" Margin="4" 
+                    MaxWidth="250"
+                    Value="{Binding ElementName=txtDimension,Path=Text}"/>
+            <TextBox x:Name="txtDimension"                   
+                     Margin="6" MinWidth="150" MaxWidth="250"/>
+        </StackPanel>
+    </Grid>
+</Window>
