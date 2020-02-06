@@ -7,19 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="images\copy.png" />
-    <None Remove="images\FowlerMartin.jpg" />
-    <None Remove="images\paste.jpg" />
     <None Remove="images\Seemann.jpeg" />
-    <None Remove="images\UncleBob.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="images\copy.png" />
-    <Resource Include="images\FowlerMartin.jpg" />
-    <Resource Include="images\paste.jpg" />
     <Resource Include="images\Seemann.jpeg" />
-    <Resource Include="images\UncleBob.jpg" />
   </ItemGroup>
 
 </Project>

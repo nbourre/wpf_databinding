@@ -13,10 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Databinding_B_source
+namespace DataBinding_C_DataContext
 {
     /// <summary>
-    /// Code-behind de ma fenêtre principale
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -34,11 +34,12 @@ namespace Databinding_B_source
 
             InitializeComponent();
 
-            Binding pictureBinding = new Binding();
-            pictureBinding.Source = employee;
-            pictureBinding.Path = new PropertyPath("PicturePath");
 
-            EmployeePicture.SetBinding(Image.SourceProperty, pictureBinding);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            employee.Age = 40;
         }
     }
 }
