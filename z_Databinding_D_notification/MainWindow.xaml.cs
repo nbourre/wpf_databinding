@@ -1,17 +1,17 @@
 ﻿using System.Windows;
 
-namespace DataBinding_C_DataContext
+namespace Databinding_D_notification
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Employee employee { get; set; }
+        public Employee Employee { get; set; }
 
         public MainWindow()
         {
-            employee = new Employee()
+            Employee = new Employee()
             {
                 Age = 45,
                 LastName = "Seemann",
@@ -20,13 +20,11 @@ namespace DataBinding_C_DataContext
             };
 
             InitializeComponent();
-
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            employee.Age = 40;
+            Employee.Age = 40;
         }
     }
 }
