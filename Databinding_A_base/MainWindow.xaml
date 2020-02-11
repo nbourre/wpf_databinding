@@ -10,9 +10,9 @@
         <StackPanel Margin="10">
             <Slider x:Name="slider" VerticalAlignment="Center" Margin="4" 
                     MaxWidth="250"
-                    Value="{Binding ElementName=txtDimension,Path=Text}"/>
-            <TextBox x:Name="txtDimension"                   
-                     Margin="6" MinWidth="150" MaxWidth="250"/>
+                    Value="{Binding ElementName=txtDimension,Path=Content}"/>
+            <Button x:Name="txtDimension"                   
+                     Margin="6" MinWidth="150" MaxWidth="250" Height="35"/>
         </StackPanel>
     </Grid>
 </Window>
