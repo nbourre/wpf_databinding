@@ -5,72 +5,88 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Databinding_E_game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="My game library" Height="450" Width="800"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
-    <Grid Margin="6">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <StackPanel>
-            <Image Height="300" Source="{Binding CurrentGame.CoverPath}" Margin="6"/>
-            <ScrollBar x:Name="ScrollBarGame" Orientation="Horizontal" ValueChanged="ScrollBar_ValueChanged"
+
+    <DockPanel>
+        
+        <Grid DockPanel.Dock="Left">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="My games" Margin="6" />
+            <ListView Grid.Row="1" MinWidth="250" ItemsSource="{Binding games}">
+                <ListViewItem>
+                    <TextBlock Text="{Binding currentGame.Info}"/>
+                </ListViewItem>
+            </ListView>
+        </Grid>
+        <Grid Margin="6" DockPanel.Dock="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <Image Height="300" Source="{Binding CurrentGame.CoverPath}" Margin="6"/>
+                <ScrollBar x:Name="ScrollBarGame" Orientation="Horizontal" ValueChanged="ScrollBar_ValueChanged"
                        Maximum="{Binding MaxIndex}"
                        SmallChange="1" LargeChange="5" Margin="6" 
                        />
-            <TextBlock Text="{Binding ElementName=ScrollBarGame,Path=Value}"/>
-        </StackPanel>
-        <Grid Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.Column="0"
+                <TextBlock Text="{Binding ElementName=ScrollBarGame,Path=Value}"/>
+            </StackPanel>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0"
                 Content="Title :" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding CurrentGame.Title}"
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding CurrentGame.Title}"
                      VerticalAlignment="Center" Margin="6"/>
-            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                <Label Grid.Row="1" Grid.Column="0"
+                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Label Grid.Row="1" Grid.Column="0"
                     Content="Description :" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CurrentGame.Description}"
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CurrentGame.Description}"
                          TextWrapping="Wrap"
                      VerticalAlignment="Center" Margin="6"
                          Height="45"/>
-            </StackPanel>
-            <Label Grid.Row="2" Grid.Column="0"
+                </StackPanel>
+                <Label Grid.Row="2" Grid.Column="0"
                 Content="Editor :" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentGame.Editor}"
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentGame.Editor}"
                      VerticalAlignment="Center" Margin="6"/>
-            <Label Grid.Row="3" Grid.Column="0"
+                <Label Grid.Row="3" Grid.Column="0"
                 Content="Year :" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding CurrentGame.Year}"
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding CurrentGame.Year}"
                      VerticalAlignment="Center" Margin="6"/>
-            <Label Grid.Row="4" Grid.Column="0"
+                <Label Grid.Row="4" Grid.Column="0"
                 Content="Console :" VerticalAlignment="Center"/>
-            <ComboBox Grid.Row="4" Grid.Column="1"
+                <ComboBox Grid.Row="4" Grid.Column="1"
                      VerticalAlignment="Center" Margin="6"  SelectedItem="{Binding CurrentGame.Console}">
-                <ComboBoxItem Content="PS4"/>
-                <ComboBoxItem Content="XBox"/>
-                <ComboBoxItem Content="Switch"/>
-                <ComboBoxItem Content="PC"/>
-            </ComboBox>
-            <Label Grid.Row="5" Grid.Column="0"
+                    <ComboBoxItem Content="PS4"/>
+                    <ComboBoxItem Content="XBox"/>
+                    <ComboBoxItem Content="Switch"/>
+                    <ComboBoxItem Content="PC"/>
+                </ComboBox>
+                <Label Grid.Row="5" Grid.Column="0"
                 Content="Rating :" VerticalAlignment="Center"/>
-            <Slider Grid.Row="5" Grid.Column="1" Value="{Binding CurrentGame.Rating}"
+                <Slider Grid.Row="5" Grid.Column="1" Value="{Binding CurrentGame.Rating}"
                     VerticalAlignment="Center" Margin="6"
                     Minimum="0" Maximum="10"
                     SmallChange="1" LargeChange="3"
                     SnapsToDevicePixels="True"
                     ValueChanged="Slider_ValueChanged"/>
 
+            </Grid>
         </Grid>
-    </Grid>
+    </DockPanel>
 </Window>

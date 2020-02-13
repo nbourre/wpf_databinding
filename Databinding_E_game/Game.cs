@@ -12,6 +12,7 @@ namespace Databinding_E_game
         public string Editor { get; set; }
         public int Year { get; set; }
         public string Console { get; set; }
+        public string Info => $"{Title} : {Description}";
 
         public double Rating {
             get => rating;

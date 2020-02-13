@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Databinding_E_game
 {
@@ -25,8 +14,7 @@ namespace Databinding_E_game
     {
         private Game currentGame;
 
-        public List<Game> games { get; set; }
-        private int maxIndex;
+        public ObservableCollection<Game> games { get; set; }
 
         public Game CurrentGame {
             get => currentGame;
@@ -37,11 +25,11 @@ namespace Databinding_E_game
             }
         }
 
-        public int MaxIndex { get => maxIndex; set => maxIndex = value; }
+        public int MaxIndex { get; set; }
 
         public MainWindow()
         {
-            games = new List<Game>()
+            games = new ObservableCollection<Game>()
             {
                 new Game {Title = "Super Mario Bros.",
                     Console="Switch", CoverPath="images/super_mario.png",
