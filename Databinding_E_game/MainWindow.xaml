@@ -16,7 +16,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="My games" Margin="6" />
-            <ListView Grid.Row="1" MinWidth="250" ItemsSource="{Binding games}">
+            <ListView Grid.Row="1" MinWidth="250" ItemsSource="{Binding Games}" >
                 <ListViewItem>
                     <TextBlock Text="{Binding currentGame.Info}"/>
                 </ListViewItem>
