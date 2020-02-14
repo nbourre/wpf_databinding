@@ -4,39 +4,59 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Databinding_E_game
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private Game currentGame;
+        private ObservableCollection<Game> games = new ObservableCollection<Game>();
 
-        public ObservableCollection<Game> Games { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public Game CurrentGame { get; set; }
+        public ObservableCollection<Game> Games { get => games; set => games = value; }
+
+        public Game CurrentGame { 
+            get => currentGame; 
+            set {
+                currentGame = value;
+                OnPropertyChanged();
+            }
+        }
 
         public int MaxIndex { get; set; }
 
         public MainWindow()
         {
-            Games = new ObservableCollection<Game>();
-
             InitializeComponent();
 
 
             Games.Add(
-                new Game { Title = "Super Mario Bros.",
-                    Console = "Switch", CoverPath = "images/super_mario.png",
+                new Game
+                {
+                    Title = "Super Mario Bros.",
+                    Console = "Switch",
+                    CoverPath = "images/super_mario.png",
                     Description = "Plumber who's never tired of saving the Princess.",
-                    Editor = "Nintendo", Rating = 10, Year = 1985 });
+                    Editor = "Nintendo",
+                    Rating = 10,
+                    Year = 1985
+                });
             Games.Add(
-                new Game { Title = "Ark",
-                    Console = "XBox", CoverPath = "images/ark.jpg",
+                new Game
+                {
+                    Title = "Ark",
+                    Console = "XBox",
+                    CoverPath = "images/ark.jpg",
                     Description = "Survive in a dinosaur world",
-                    Editor = "I don't remember", Rating = 7, Year = 2014 });
+                    Editor = "I don't remember",
+                    Rating = 7,
+                    Year = 2014
+                });
 
             Games.Add(
                 new Game
@@ -53,8 +73,11 @@ namespace Databinding_E_game
             CurrentGame = Games[0];
             MaxIndex = Games.Count - 1;
 
-            
+        }
 
+        protected virtual void OnPropertyChanged([CallerMemberName]string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
 
@@ -63,14 +86,10 @@ namespace Databinding_E_game
             CurrentGame.Rating = e.NewValue;
         }
 
-        private void ScrollBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void ListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            Debug.WriteLine((int)e.NewValue);
-
-            int newIndex = (int)e.NewValue;
-
-            CurrentGame = Games[newIndex];
-
+            ListView lv = (ListView)e.Source;
+            CurrentGame = (Game)lv.SelectedItem;
         }
     }
 }

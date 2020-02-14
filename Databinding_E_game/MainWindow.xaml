@@ -16,10 +16,12 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="My games" Margin="6" />
-            <ListView Grid.Row="1" MinWidth="250" ItemsSource="{Binding Games}" >
-                <ListViewItem>
-                    <TextBlock Text="{Binding currentGame.Info}"/>
-                </ListViewItem>
+            <ListView Grid.Row="1" MinWidth="250" ItemsSource="{Binding Games}" SelectedItem="{Binding CurrentGame}" SelectionChanged="ListView_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="{x:Type local:Game}">
+                        <TextBlock Text="{Binding Info}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </Grid>
         <Grid Margin="6" DockPanel.Dock="Right">
@@ -29,11 +31,6 @@
             </Grid.ColumnDefinitions>
             <StackPanel>
                 <Image Height="300" Source="{Binding CurrentGame.CoverPath}" Margin="6"/>
-                <ScrollBar x:Name="ScrollBarGame" Orientation="Horizontal" ValueChanged="ScrollBar_ValueChanged"
-                       Maximum="{Binding MaxIndex}"
-                       SmallChange="1" LargeChange="5" Margin="6" 
-                       />
-                <TextBlock Text="{Binding ElementName=ScrollBarGame,Path=Value}"/>
             </StackPanel>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
