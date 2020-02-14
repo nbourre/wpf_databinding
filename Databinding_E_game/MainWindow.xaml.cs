@@ -14,11 +14,11 @@ namespace Databinding_E_game
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private Game currentGame;
-        private ObservableCollection<Game> games = new ObservableCollection<Game>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ObservableCollection<Game> Games { get => games; set => games = value; }
+        public ObservableCollection<Game> Games { get; set; } = new ObservableCollection<Game>();
+        public ObservableCollection<string> Consoles { get; set; } = new ObservableCollection<string>();
 
         public Game CurrentGame { 
             get => currentGame; 
@@ -33,8 +33,30 @@ namespace Databinding_E_game
         public MainWindow()
         {
             InitializeComponent();
+            initValues();
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName]string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
 
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            CurrentGame.Rating = e.NewValue;
+        }
+
+        private void ListView_SelectionChanged(
+            object sender,
+            SelectionChangedEventArgs e)
+        {
+            ListView lv = (ListView)sender;
+            CurrentGame = (Game)lv.SelectedItem;
+        }
+
+        private void initValues()
+        {
             Games.Add(
                 new Game
                 {
@@ -73,23 +95,10 @@ namespace Databinding_E_game
             CurrentGame = Games[0];
             MaxIndex = Games.Count - 1;
 
-        }
-
-        protected virtual void OnPropertyChanged([CallerMemberName]string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            CurrentGame.Rating = e.NewValue;
-        }
-
-        private void ListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            ListView lv = (ListView)e.Source;
-            CurrentGame = (Game)lv.SelectedItem;
+            Consoles.Add("PS4");
+            Consoles.Add("Xbox");
+            Consoles.Add("PC");
+            Consoles.Add("Switch");
         }
     }
 }
