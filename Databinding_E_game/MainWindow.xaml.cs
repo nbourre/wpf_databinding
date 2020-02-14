@@ -20,9 +20,11 @@ namespace Databinding_E_game
         public ObservableCollection<Game> Games { get; set; } = new ObservableCollection<Game>();
         public ObservableCollection<string> Consoles { get; set; } = new ObservableCollection<string>();
 
-        public Game CurrentGame { 
-            get => currentGame; 
-            set {
+        public Game CurrentGame
+        {
+            get => currentGame;
+            set
+            {
                 currentGame = value;
                 OnPropertyChanged();
             }
@@ -99,6 +101,12 @@ namespace Databinding_E_game
             Consoles.Add("Xbox");
             Consoles.Add("PC");
             Consoles.Add("Switch");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentGame = new Game();
+            Games.Add(CurrentGame);
         }
     }
 }

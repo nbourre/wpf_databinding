@@ -10,6 +10,7 @@
     <None Remove="images\ark.jpg" />
     <None Remove="images\balloon_fight.jpg" />
     <None Remove="images\kung_fu.jpg" />
+    <None Remove="images\plus.png" />
     <None Remove="images\super_mario.png" />
   </ItemGroup>
 
@@ -21,6 +22,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="images\kung_fu.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\plus.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="images\super_mario.png">

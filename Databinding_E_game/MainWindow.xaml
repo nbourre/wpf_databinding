@@ -9,13 +9,20 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <DockPanel>
-        
         <Grid DockPanel.Dock="Left">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="My games" Margin="6" />
+            <StackPanel Margin="6" Orientation="Horizontal">
+                <TextBlock Grid.Row="0" Text="My games" />
+                <Button Margin="6 0"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Click="Button_Click">
+                    <Image Source="images/plus.png" Height="12"/>
+                </Button>
+            </StackPanel>
             <ListView Grid.Row="1" MinWidth="250" ItemsSource="{Binding Games}" SelectedItem="{Binding CurrentGame}" SelectionChanged="ListView_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="{x:Type local:Game}">
@@ -70,7 +77,9 @@
                 <Label Grid.Row="4" Grid.Column="0"
                 Content="Console :" VerticalAlignment="Center"/>
                 <ComboBox Grid.Row="4" Grid.Column="1"
-                     VerticalAlignment="Center" Margin="6"  SelectedItem="{Binding CurrentGame.Console}" ItemsSource="{Binding Consoles}" />
+                          VerticalAlignment="Center" Margin="6"
+                          SelectedItem="{Binding CurrentGame.Console}"
+                          ItemsSource="{Binding Consoles}" />
 
                 <Label Grid.Row="5" Grid.Column="0"
                 Content="Rating :" VerticalAlignment="Center"/>

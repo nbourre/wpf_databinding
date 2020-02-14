@@ -7,16 +7,53 @@ namespace Databinding_E_game
     {
         private double rating;
         private string console;
+        private string title;
+        private string description;
+        private string editor;
+        private int year;
+        
+        public string Title { 
+            get => title;
+            set { 
+                title = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(Info));
+            } 
+        }
 
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Editor { get; set; }
-        public int Year { get; set; }
+        public string Description { 
+            get => description;
+            set
+            {
+                description = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(Info));
+            }
+        }
+
+        public string Editor { 
+            get => editor;
+            set
+            {
+                editor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int Year { 
+            get => year;
+            set
+            {
+                year = value;
+                OnPropertyChanged();
+            }
+        }
 
         public string Console
         {
             get => console;
-            set { 
+            set
+            {
                 console = value;
                 OnPropertyChanged();
             }
