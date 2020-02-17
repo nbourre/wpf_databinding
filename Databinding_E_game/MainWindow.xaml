@@ -40,6 +40,7 @@
                 <Border BorderThickness="1" BorderBrush="Black">
                     <Image Source="{Binding CurrentGame.CoverPath}" Margin="6" />
                 </Border>
+                <Button Content="Add/Change image..." Click="add_image"/>
             </StackPanel>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>

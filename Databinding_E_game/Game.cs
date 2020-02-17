@@ -11,17 +11,21 @@ namespace Databinding_E_game
         private string description;
         private string editor;
         private int year;
-        
-        public string Title { 
+        private string coverPath;
+
+        public string Title
+        {
             get => title;
-            set { 
+            set
+            {
                 title = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(Info));
-            } 
+            }
         }
 
-        public string Description { 
+        public string Description
+        {
             get => description;
             set
             {
@@ -31,7 +35,8 @@ namespace Databinding_E_game
             }
         }
 
-        public string Editor { 
+        public string Editor
+        {
             get => editor;
             set
             {
@@ -40,7 +45,8 @@ namespace Databinding_E_game
             }
         }
 
-        public int Year { 
+        public int Year
+        {
             get => year;
             set
             {
@@ -69,7 +75,13 @@ namespace Databinding_E_game
                 OnPropertyChanged();
             }
         }
-        public string CoverPath { get; set; }
+        public string CoverPath { 
+            get => coverPath;
+            set { 
+                coverPath = value;
+                OnPropertyChanged();
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Win32;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -107,6 +108,19 @@ namespace Databinding_E_game
         {
             CurrentGame = new Game();
             Games.Add(CurrentGame);
+        }
+
+        private void add_image(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            ofd.Title = "Load an image";
+            ofd.Filter = "All supported graphics|*.jpg;*.png;*.jpeg;*.svg|All files (*.*)|*.*";
+
+            if (ofd.ShowDialog() == true)
+            {
+                CurrentGame.CoverPath = ofd.FileName;
+            }
         }
     }
 }
